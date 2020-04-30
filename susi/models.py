@@ -71,8 +71,9 @@ class SusiSchedule(models.Model):
             to='SusiDetail',
             on_delete=models.CASCADE,
             )
-    description = models.TextField(
+    description = models.CharField(
             verbose_name='설명',
+            max_length=255,
             )
     start_date = models.DateTimeField(
             verbose_name='시작시간',
@@ -82,5 +83,5 @@ class SusiSchedule(models.Model):
             )
 
     def __str__(self):
-        return str(self.susi_detail.susi.year) + '학년도 ' + self.susi_detail.susi.university.name + ' ' + self.susi.name + ' ' + str(self.susi_detail.id) + ' 일정' + str(self.id)
+        return str(self.susi_detail.susi.year) + '학년도 ' + self.susi_detail.susi.university.name + ' ' + self.susi_detail.susi.name + ' ' + str(self.susi_detail.id) + ' 일정 ' + str(self.id)
 

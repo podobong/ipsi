@@ -57,6 +57,10 @@ class JeongsiSchedule(models.Model):
             to='JeongsiDetail',
             on_delete=models.CASCADE,
             )
+    description = models.CharField(
+            verbose_name='설명',
+            max_length=255,
+            )
     start_date = models.DateTimeField(
             verbose_name='시작시간',
             )
