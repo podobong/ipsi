@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from susi.models import *
+
+
+admin.site.register(Susi)
+admin.site.register(SusiDetail)
+admin.site.register(SusiSchedule)
+
