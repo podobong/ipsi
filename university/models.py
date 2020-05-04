@@ -1,4 +1,5 @@
 from django.db import models
+from multiselectfield import MultiSelectField
 
 
 REGIONS = (
@@ -65,7 +66,7 @@ class Major(models.Model):
             unique=True,
             max_length=31,
             )
-    moonigwa = models.CharField(
+    moonigwa = MultiSelectField(
             verbose_name='계열',
             choices=MOONIGWA,
             max_length=7,

@@ -62,14 +62,13 @@ class SusiDetail(models.Model):
             )
 
     def __str__(self):
-        return str(self.susi.year) + '학년도 ' + self.susi.university.name + ' ' + self.susi.name + ' ' + str(self.id)
+        return str(self.susi.year) + '학년도 ' + self.susi.university.name + ' ' + self.susi.name + ' (' + self.major.first().name + ' 외)'
 
 
 class SusiSchedule(models.Model):
-    susi_detail = models.ForeignKey(
+    susi_detail = models.ManyToManyField(
             verbose_name='수시전형 종류',
-            to='SusiDetail',
-            on_delete=models.CASCADE,
+            to=SusiDetail,
             )
     description = models.CharField(
             verbose_name='설명',
@@ -83,5 +82,5 @@ class SusiSchedule(models.Model):
             )
 
     def __str__(self):
-        return str(self.susi_detail.susi.year) + '학년도 ' + self.susi_detail.susi.university.name + ' ' + self.susi_detail.susi.name + ' ' + str(self.susi_detail.id) + ' 일정 ' + str(self.id)
+        return str(self.susi_detail.first().susi.year) + '학년도 ' + self.susi_detail.first().susi.university.name + ' ' + self.susi_detail.first().susi.name + ' (' + self.susi_detail.first().major.first().name +  ' 외) 일정: ' + self.description
 
