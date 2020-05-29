@@ -1,26 +1,22 @@
 from rest_framework import serializers
 
 from university.models import *
-
-
-class UniversitySerializer(serializers.ModelSerializer):
-    region = serializers.CharField(source='get_region_display')
-
-    class Meta:
-        model = University
-        fields = ['name', 'logo', 'region']
-
-
-class CollegeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = College
-        fields = ['university', 'name']
+from susi.serializers import *
+from jeongsi.serializers import *
 
 
 class MajorSerializer(serializers.ModelSerializer):
-    moonigwa = serializers.CharField(source='get_moonigwa_display')
-
     class Meta:
         model = Major
-        fields = ['college', 'name', 'moonigwa']
+        fields = ['name']
+
+
+class UniversitySerializer(serializers.ModelSerializer):
+    susis = SusiSerializer(many=True, read_only=True)
+    jeongsis = JeongsiSerializer(many=True, read_only=True)
+    majors = MajorSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = University
+        fields = ['name', 'logo', 'susis', 'jeongsis', 'majors']
 

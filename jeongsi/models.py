@@ -16,6 +16,7 @@ class Jeongsi(models.Model):
     university = models.ForeignKey(
             verbose_name='대학',
             to='university.University',
+            related_name='jeongsis',
             on_delete=models.CASCADE,
             )
     year = models.IntegerField(
@@ -41,10 +42,6 @@ class JeongsiDetail(models.Model):
             verbose_name='군',
             choices=GUNS,
             max_length=7,
-            )
-    required_documents = models.TextField(
-            verbose_name='필요 서류',
-            blank=True,
             )
 
     def __str__(self):

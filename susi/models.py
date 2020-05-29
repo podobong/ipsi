@@ -23,6 +23,7 @@ class Susi(models.Model):
     university = models.ForeignKey(
             verbose_name='대학',
             to='university.University',
+            related_name='susis',
             on_delete=models.CASCADE,
             )
     name = models.CharField(
@@ -52,13 +53,6 @@ class SusiDetail(models.Model):
     major = models.ManyToManyField(
             verbose_name='학과',
             to=Major,
-            )
-    required_documents = models.TextField(
-            verbose_name='필요 서류',
-            blank=True,
-            )
-    min_grade = models.TextField(
-            verbose_name='수능 최저등급',
             )
 
     def __str__(self):
