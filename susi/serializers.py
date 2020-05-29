@@ -9,7 +9,7 @@ class SusiSerializer(serializers.ModelSerializer):
         fields = ['name', 'year', 'susi_type']
 
 
-class ScheduleSerializer(serializers.ModelSerializer):
+class SusiScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = SusiSchedule
         fields = ['description', 'start_date', 'end_date']

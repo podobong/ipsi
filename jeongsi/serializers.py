@@ -8,3 +8,9 @@ class JeongsiSerializer(serializers.ModelSerializer):
         model = Jeongsi
         fields = ['year']
 
+
+class JeongsiScheduleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JeongsiSchedule
+        fields = ['description', 'start_date', 'end_date']
+
