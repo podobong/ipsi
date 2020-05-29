@@ -4,5 +4,6 @@ from university import views
 
 
 urlpatterns = [
-    path('', views.UniversityList.as_view()),
+    path('urls/', views.UniversityList.as_view()),
+    path('select/', views.UniversitySelect.as_view()),
 ]
