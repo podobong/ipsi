@@ -13,25 +13,18 @@ from suneung.models import *
 
 
 with open('csv/university.csv', 'w', newline='') as csvfile:
-    fieldnames = ['name', 'logo', 'region']
+    fieldnames = ['name', 'logo']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for univ in University.objects.all():
-        writer.writerow({'name': univ.name, 'logo': univ.logo, 'region': univ.region})
+        writer.writerow({'name': univ.name, 'logo': univ.logo})
 
-with open('csv/college.csv', 'w', newline='') as csvfile:
+with open('csv/major.csv', 'w', newline='') as csvfile:
     fieldnames = ['university', 'name']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
-    for col in College.objects.all():
-        writer.writerow({'university': col.university, 'name': col.name})
-
-with open('csv/major.csv', 'w', newline='') as csvfile:
-    fieldnames = ['college', 'name', 'moonigwa']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    writer.writeheader()
     for maj in Major.objects.all():
-        writer.writerow({'college': maj.college, 'name': maj.name, 'moonigwa': maj.moonigwa})
+        writer.writerow({'university': maj.university, 'name': maj.name})
 
 with open('csv/susi.csv', 'w', newline='') as csvfile:
     fieldnames = ['university', 'name', 'year', 'susi_type']
@@ -41,11 +34,11 @@ with open('csv/susi.csv', 'w', newline='') as csvfile:
         writer.writerow({'university': susi.university, 'name': susi.name, 'year': susi.year, 'susi_type': susi.susi_type})
 
 with open('csv/susi_detail.csv', 'w', newline='') as csvfile:
-    fieldnames = ['susi', 'major', 'min_grade']
+    fieldnames = ['susi', 'major']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for detail in SusiDetail.objects.all():
-        writer.writerow({'susi': detail.susi, 'major': str(detail.major.first()) + ' 외', 'min_grade': detail.min_grade})
+        writer.writerow({'susi': detail.susi, 'major': str(detail.major.first()) + ' 외'})
 
 with open('csv/susi_schedule.csv', 'w', newline='') as csvfile:
     fieldnames = ['susi_detail', 'description', 'start_date', 'end_date']

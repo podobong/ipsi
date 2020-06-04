@@ -45,7 +45,7 @@ class JeongsiDetail(models.Model):
             )
 
     def __str__(self):
-        return str(self.jeongsi.year) + self.jeongsi.university.name + ' 정시전형 ' + str(self.id)
+        return str(self.jeongsi.year) + '학년도 ' + self.jeongsi.university.name + ' 정시전형 (' + self.gun + ')'
 
 
 class JeongsiSchedule(models.Model):
@@ -66,5 +66,4 @@ class JeongsiSchedule(models.Model):
             )
 
     def __str__(self):
-        return str(self.jeongsi_detail.jeongsi.year) + self.jeongsi_detail.jeongsi.university.name + '정시전형' + str(self.jeongsi_detail.id) + '일정 ' + str(self.id)
-
+        return str(self.jeongsi_detail.jeongsi.year) + '학년도 '+ self.jeongsi_detail.jeongsi.university.name + '정시전형 (' + self.jeongsi_detail.gun + ') 일정: ' + self.description
