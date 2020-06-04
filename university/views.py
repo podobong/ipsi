@@ -40,3 +40,4 @@ class UniversitySelect(APIView):
             return Response(serializer.data)
         else:
             pass
+
