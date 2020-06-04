@@ -19,18 +19,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fcl(%upy%rogy^$s=u#nr8wqb$(tic+bf)w5q+@c#-wac06m(j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.ap-northeast-2.compute.amazonaws.com','*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'review.apps.ReviewConfig',
     'university.apps.UniversityConfig',
     'susi.apps.SusiConfig',
     'jeongsi.apps.JeongsiConfig',
