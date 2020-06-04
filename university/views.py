@@ -11,6 +11,23 @@ from jeongsi.serializers import *
 
 
 class UniversityList(APIView):
+    '''
+    대학교 목록을 반환하는 API
+
+    ---
+    ## `/`
+    ## OUTPUT
+        - 'name': 대학교 이름
+        - 'logo': 대학 로고 파일의 이름
+        - 'susis':
+            - 'name': 전형 이름
+            - 'year': 년도
+            - 'sysi_type': 수시의 전형 종류
+        - 'jeongsis':
+            - 'year': 년도
+        - 'majors':
+            - 'name': 학과 이름
+    '''
     def get(self, request):
         universities = University.objects.all()
         serializer = UniversitySerializer(universities, many=True)
@@ -18,6 +35,22 @@ class UniversityList(APIView):
 
 
 class UniversitySelect(APIView):
+    '''
+    입시 일정을 반환하는 API
+
+    ---
+    ## `/select/?univ={대학}&type1={수시/정시}&type2={전형}&major={학과}`
+    ## INPUT
+        - &로 구분되는 query parameter (ex: /select/?univ=서울대학교&type1=수시&type2=일반전형&major=국어국문학과 )
+        - 'univ': 대학교 이름 (ex: 서울대학교)
+        - 'type1': 수시 or 정시
+        - 'type2': 전형 이름 (ex: 일반전형)
+        - 'major': 학과 이름 (ex: 국어국문학과)
+    ## OUTPUT
+        - 'description': 일정 이름
+        - 'start_date' : 일정이 시작되는 날짜
+        - 'end_date' : 일정이 끝나는 날짜
+    '''
     def get(self, request):
         univ = request.GET['univ']
         type1 = request.GET['type1']
