@@ -6,11 +6,11 @@ from jeongsi.models import *
 class JeongsiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Jeongsi
-        fields = ['year']
+        fields = ('year', 'gun')
 
 
 class JeongsiScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = JeongsiSchedule
-        fields = ['description', 'start_date', 'end_date']
+        fields = ('description', 'start_date', 'end_date')
 

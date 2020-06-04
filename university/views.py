@@ -19,25 +19,59 @@ class UniversityList(APIView):
 
 class UniversitySelect(APIView):
     def get(self, request):
-        univ = request.GET['univ']
-        type1 = request.GET['type1']
-        if 'type2' in request.GET:
-            type2 = request.GET['type2']
-        major = request.GET['major']
-        
-        if type1 == '수시':
-            detail = SusiDetail.objects.get(Q(susi__university__name=univ) &
-                                            Q(susi__name=type2) &
-                                            Q(major__name=major))
-            schedules = SusiSchedule.objects.filter(susi_detail=detail)
-            serializer = SusiScheduleSerializer(schedules, many=True)
-            return Response(serializer.data)
-        elif type1 == '정시':
-            detail = JeongsiDetail.objects.get(Q(jeongsi__university__name=univ) &
-                                               Q(major__name=major))
-            schedules = JeongsiSchedule.objects.filter(jeongsi_detail=detail)
-            serializer = JeongsiScheduleSerializer(schedules, many=True)
-            return Response(serializer.data)
+        univ = sj = jh = gun = block = None
+
+        # 파라미터 받고
+        if 'univ' in request.GET:
+            univ = request.GET['univ']
+        if 'sj' in request.GET:
+            sj = request.GET['sj']
+        if 'jh' in request.GET:
+            jh = request.GET['jh']
+        if 'gun' in request.GET:
+            gun = request.GET['gun']
+        if 'block' in request.GET:
+            block = request.GET['block']
+
+        # 필요한 파라미터가 없을 경우 처리하고
+        if not univ:
+            # print message: requires 'univ' parameter
+            pass
+        if not sj:
+            # print message: requires 'sj' parameter
+            pass
+        if sj == '수시' and not jh:
+            # print message: 'susi' requires 'jh' parameter
+            pass
+        if sj == '정시' and not gun:
+            # print message: 'jeongsi' requires 'gun' parameter
+            pass
+        if not block:
+            # print message: requires 'block' parameter
+            pass
+
+        # 받은 파라미터로 적절한 스케줄 검색 후 출력
+        if sj == '수시':
+            schedules = SusiSchedule.objects.filter(Q(susi__university__name=univ) &
+                                                    Q(susi__name=jh) &
+                                                    Q(major_block__name=block))
+            if not schedules:
+                # print message: schedule do not exist
+                pass
+            else:
+                serializer = SusiScheduleSerializer(schedules, many=True)
+                return Response(serializer.data)
+        elif sj == '정시':
+            schedules = JeongsiSchedule.objects.filter(Q(jeongsi__university__name=univ) &
+                                                       Q(jeongsi__gun=gun) &
+                                                       Q(major_block__name=block))
+            if not schedules:
+                # print message: schedule do not exist
+                pass
+            else:
+                serializer = JeongsiScheduleSerializer(schedules, many=True)
+                return Response(serializer.data)
         else:
+            # print message: wrong 'sj' parameter: '수시' or '정시'
             pass
 
