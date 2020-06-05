@@ -20,7 +20,7 @@ class UniversityList(APIView):
 class UniversitySelect(APIView):
     def get(self, request):
         def error_msg(message):
-            return {'error_msg': message}
+            return {'detail': message}
 
         univ = sj = jh = gun = block = None
 

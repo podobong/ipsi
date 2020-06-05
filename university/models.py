@@ -16,6 +16,11 @@ class University(models.Model):
             blank=True,
             max_length=31,
             )
+    review_url = models.CharField(
+            verbose_name='리뷰 url',
+            blank=True,
+            max_length=63,
+            )
 
     def __str__(self):
         return self.name
