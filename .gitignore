@@ -170,3 +170,5 @@ dmypy.json
 
 venv/
 *.swp
+csv/
+
