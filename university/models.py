@@ -43,7 +43,7 @@ class SusiMajorBlock(models.Model):
             )
 
     def __str__(self):
-        return self.university.name + ' ' + self.name
+        return self.university.name + '/' + self.name
 
 
 class JeongsiMajorBlock(models.Model):
@@ -63,5 +63,5 @@ class JeongsiMajorBlock(models.Model):
             )
 
     def __str__(self):
-        return self.university.name + ' ' + self.name
+        return self.university.name + '/' + self.name
 
