@@ -53,7 +53,7 @@ with open('csv/susi_schedule.csv', 'w', newline='') as csvfile:
 
 # jeongsi
 with open('csv/jeongsi.csv', 'w', newline='') as csvfile:
-    fieldnames = ['university', 'year', 'gun']
+    fieldnames = ['university', 'gun', 'year']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for jeongsi in Jeongsi.objects.all():
