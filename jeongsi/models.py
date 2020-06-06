@@ -34,8 +34,8 @@ class Jeongsi(models.Model):
             )
 
     def __str__(self):
-        return str(self.year) + '학년도 '+ self.university.name + ' 정시전형 (' + self.gun + ')'
-        # ex) 2021학년도 서울대학교 정시전형 (가군)
+        return str(self.year) + '/'+ self.university.name + '/정시전형/' + self.gun
+        # ex) 2021/서울대학교/정시전형/가군
 
 
 class JeongsiSchedule(models.Model):
@@ -67,6 +67,6 @@ class JeongsiSchedule(models.Model):
             )
 
     def __str__(self):
-        return str(self.jeongsi.year) + '학년도 ' + self.jeongsi.university.name + ' 정시전형 (' + self.jeongsi.gun + ') 일정: ' + self.description + ' (' + self.major_block.name + ')'
-        # ex) 2021학년도 서울대학교 정시전형 (가군) 일정: 지원서 접수 (의과대학, 수의과대학, 치의과대학)
+        return str(self.jeongsi.year) + '/' + self.jeongsi.university.name + '/정시전형/' + self.jeongsi.gun + '/' + self.description + '/' + self.major_block.name
+        # ex) 2021/서울대학교/정시전형/가군/지원서 접수/의과대학, 수의과대학, 치의과대학
 

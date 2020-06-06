@@ -31,8 +31,8 @@ class Susi(models.Model):
             )
 
     def __str__(self):
-        return str(self.year) + '학년도 ' + self.university.name + ' 수시전형 (' + self.name + ')'
-        # ex) 2021학년도 서울대학교 수시전형 (일반전형)
+        return str(self.year) + '/' + self.university.name + '/수시전형/' + self.name
+        # ex) 2021/서울대학교/수시전형/일반전형
 
 
 class SusiSchedule(models.Model):
@@ -64,6 +64,6 @@ class SusiSchedule(models.Model):
             )
 
     def __str__(self):
-        return str(self.susi.year) + '학년도 ' + self.susi.university.name + ' 수시전형 (' + self.susi.name + ') 일정: ' + self.description + ' (' + self.major_block.name + ')'
-        # ex) 2021학년도 서울대학교 수시전형 (일반전형) 일정: 지원서 접수 (의과대학, 수의과대학, 치의과대학)
+        return str(self.susi.year) + '/' + self.susi.university.name + '/수시전형/' + self.susi.name + '/' + self.description + '/' + self.major_block.name
+        # ex) 2021/서울대학교/수시전형/일반전형/지원서 접수/의과대학, 수의과대학, 치의과대학
 
