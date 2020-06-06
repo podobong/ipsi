@@ -122,18 +122,34 @@ class UniversitySelectAll(APIView):
 
         # 받은 파라미터로 적절한 스케줄 검색 후 출력
         # 스케줄이 없으면 에러 메시지 출력
-        responses = {}
+        responses = []
+        for i in range(num):
+            responses.append(None)
         for i in range(num):
             if sjs[i] == '수시':
                 schedules = SusiSchedule.objects.filter(Q(susi__university__name=univs[i]) &
                                                         Q(susi__name=jhs[i]) &
                                                         Q(major_block__name=blocks[i]))
-                responses[univs[i] + ' ' + sjs[i] + ' ' + jhs[i] + ' ' + blocks[i]] = SusiScheduleSerializer(schedules, many=True).data
+                responses[i] = {
+                    'num': i,
+                    'univ': univs[i],
+                    'sj': sjs[i],
+                    'jh': jhs[i],
+                    'block': blocks[i],
+                    'schedules': SusiScheduleSerializer(schedules, many=True).data,
+                }
             elif sjs[i] == '정시':
                 schedules = JeongsiSchedule.objects.filter(Q(jeongsi__university__name=univs[i]) &
                                                            Q(jeongsi__gun=guns[i]) &
                                                            Q(major_block__name=blocks[i]))
-                responses[univs[i] + ' ' + sjs[i] + ' ' + guns[i] + ' ' + blocks[i]] = JeongsiScheduleSerializer(schedules, many=True).data
+                responses[i] = {
+                    'num': i,
+                    'univ': univs[i],
+                    'sj': sjs[i],
+                    'gun': guns[i],
+                    'block': blocks[i],
+                    'schedules': JeongsiScheduleSerializer(schedules, many=True).data,
+                }
        
         return Response(responses)
 
