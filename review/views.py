@@ -19,9 +19,7 @@ class ReviewDetail(APIView):
             return University.objects.get(name=univ)
         except University.DoesNotExist:
             raise Http404
-
     def get(self, request, univ):
-        university = self.get_object(univ)
+        university = get_object(univ)
         serializer = ReviewSerializer(university)
         return Response(serializer.data)
-
