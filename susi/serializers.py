@@ -6,11 +6,11 @@ from susi.models import *
 class SusiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Susi
-        fields = ['name', 'year', 'susi_type']
+        fields = ('year', 'name')
 
 
 class SusiScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = SusiSchedule
-        fields = ['description', 'start_date', 'end_date']
+        fields = ('description', 'start_date', 'end_date')
 

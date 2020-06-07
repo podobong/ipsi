@@ -5,14 +5,18 @@ from susi.models import YEARS
 
 
 GUNS = (
-        ('GA', '가군'),
-        ('NA', '나군'),
-        ('DA', '다군'),
-        ('ETC', '군외'),
+        ('가군', '가군'),
+        ('나군', '나군'),
+        ('다군', '다군'),
+        ('군외', '군외'),
        )
 
 
 class Jeongsi(models.Model):
+    class Meta:
+        verbose_name = '정시전형'
+        verbose_name_plural = '정시전형'
+
     university = models.ForeignKey(
             verbose_name='대학',
             to='university.University',
@@ -23,21 +27,6 @@ class Jeongsi(models.Model):
             verbose_name='학년도',
             choices=YEARS,
             )
-
-    def __str__(self):
-        return str(self.year) + self.university.name + ' 정시전형'
-
-
-class JeongsiDetail(models.Model):
-    jeongsi = models.ForeignKey(
-            verbose_name='정시전형',
-            to='Jeongsi',
-            on_delete=models.CASCADE,
-            )
-    major = models.ManyToManyField(
-            verbose_name='학과',
-            to=Major,
-            )
     gun = models.CharField(
             verbose_name='군',
             choices=GUNS,
@@ -45,13 +34,25 @@ class JeongsiDetail(models.Model):
             )
 
     def __str__(self):
-        return str(self.jeongsi.year) + '학년도 ' + self.jeongsi.university.name + ' 정시전형 (' + self.gun + ')'
+        return str(self.year) + '/'+ self.university.name + '/정시전형/' + self.gun
+        # ex) 2021/서울대학교/정시전형/가군
 
 
 class JeongsiSchedule(models.Model):
-    jeongsi_detail = models.ForeignKey(
-            verbose_name='정시전형 종류',
-            to='JeongsiDetail',
+    class Meta:
+        verbose_name = '정시전형 일정'
+        verbose_name_plural = '정시전형 일정'
+
+    jeongsi = models.ForeignKey(
+            verbose_name = '정시전형 종류',
+            to='Jeongsi',
+            related_name='jeongsi_schedules',
+            on_delete=models.CASCADE,
+            )
+    major_block = models.ForeignKey(
+            verbose_name='학과 블록',
+            to='university.JeongsiMajorBlock',
+            related_name='jeongsi_schedules',
             on_delete=models.CASCADE,
             )
     description = models.CharField(
@@ -66,4 +67,6 @@ class JeongsiSchedule(models.Model):
             )
 
     def __str__(self):
-        return str(self.jeongsi_detail.jeongsi.year) + '학년도 '+ self.jeongsi_detail.jeongsi.university.name + '정시전형 (' + self.jeongsi_detail.gun + ') 일정: ' + self.description
+        return str(self.jeongsi.year) + '/' + self.jeongsi.university.name + '/정시전형/' + self.jeongsi.gun + '/' + self.description + '/' + self.major_block.name
+        # ex) 2021/서울대학교/정시전형/가군/지원서 접수/의과대학, 수의과대학, 치의과대학
+

@@ -1,8 +1,10 @@
 from rest_framework import serializers
-from review.models import *
+
+from university.models import University
 
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Review
-        fields = ['university', 'url']
+        model = University
+        fields = ('name', 'review_url')
+

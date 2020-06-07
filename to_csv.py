@@ -12,66 +12,66 @@ from jeongsi.models import *
 from suneung.models import *
 
 
+# university
 with open('csv/university.csv', 'w', newline='') as csvfile:
-    fieldnames = ['name', 'logo']
+    fieldnames = ['name', 'logo', 'review_url']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for univ in University.objects.all():
         writer.writerow({'name': univ.name, 'logo': univ.logo})
 
-with open('csv/major.csv', 'w', newline='') as csvfile:
+with open('csv/susi_major_block.csv', 'w', newline='') as csvfile:
     fieldnames = ['university', 'name']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
-    for maj in Major.objects.all():
-        writer.writerow({'university': maj.university, 'name': maj.name})
+    for major_block in SusiMajorBlock.objects.all():
+        writer.writerow({'university': major_block.university, 'name': major_block.name})
 
+with open('csv/jeongsi_major_block.csv', 'w', newline='') as csvfile:
+    fieldnames = ['university', 'name']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    writer.writeheader()
+    for major_block in JeongsiMajorBlock.objects.all():
+        writer.writerow({'university': major_block.university, 'name': major_block.name})
+
+
+# susi
 with open('csv/susi.csv', 'w', newline='') as csvfile:
-    fieldnames = ['university', 'name', 'year', 'susi_type']
+    fieldnames = ['university', 'name', 'year']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for susi in Susi.objects.all():
-        writer.writerow({'university': susi.university, 'name': susi.name, 'year': susi.year, 'susi_type': susi.susi_type})
-
-with open('csv/susi_detail.csv', 'w', newline='') as csvfile:
-    fieldnames = ['susi', 'major']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    writer.writeheader()
-    for detail in SusiDetail.objects.all():
-        writer.writerow({'susi': detail.susi, 'major': str(detail.major.first()) + ' 외'})
+        writer.writerow({'university': susi.university, 'name': susi.name, 'year': susi.year})
 
 with open('csv/susi_schedule.csv', 'w', newline='') as csvfile:
-    fieldnames = ['susi_detail', 'description', 'start_date', 'end_date']
+    fieldnames = ['susi', 'major_block', 'description', 'start_date', 'end_date']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for schedule in SusiSchedule.objects.all():
-        writer.writerow({'susi_detail': str(schedule.susi_detail.first()) + ' 외', 'description': schedule.description, 'start_date': schedule.start_date, 'end_date': schedule.end_date})
+        writer.writerow({'susi': schedule.susi, 'major_block': schedule.major_block, 'description': schedule.description, 'start_date': schedule.start_date, 'end_date': schedule.end_date})
 
+
+# jeongsi
 with open('csv/jeongsi.csv', 'w', newline='') as csvfile:
-    fieldnames = ['university', 'year']
+    fieldnames = ['university', 'gun', 'year']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for jeongsi in Jeongsi.objects.all():
-        writer.writerow({'university': jeongsi.university, 'year': jeongsi.year})
-
-with open('csv/jeongsi_detail.csv', 'w', newline='') as csvfile:
-    fieldnames = ['jeongsi', 'major', 'gun']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    writer.writeheader()
-    for detail in JeongsiDetail.objects.all():
-        writer.writerow({'jeongsi': detail.jeongsi, 'major': detail.major, 'gun': detail.gun})
+        writer.writerow({'university': jeongsi.university, 'year': jeongsi.year, 'gun': jeongsi.gun})
 
 with open('csv/jeongsi_schedule.csv', 'w', newline='') as csvfile:
-    fieldnames = ['jeongsi_detail', 'description', 'start_date', 'end_date']
+    fieldnames = ['jeongsi', 'major_block', 'description', 'start_date', 'end_date']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for schedule in JeongsiSchedule.objects.all():
-        writer.writerow({'jeongsi_detail': schedule.jeongsi_detail, 'description': schedule.description, 'start_date': schedule.start_date, 'end_date': schedule.end_date})
+        writer.writerow({'jeongsi': schedule.jeongsi, 'major_block': schedule.major_block, 'description': schedule.description, 'start_date': schedule.start_date, 'end_date': schedule.end_date})
 
+
+# suneung
 with open('csv/suneung.csv', 'w', newline='') as csvfile:
     fieldnames = ['description', 'start_date', 'end_date']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
-    for schedule in Suneung.objects.all():
-        writer.writerow({'description': schedule.description, 'start_date': schedule.start_date, 'end_date': schedule.end_date})
+    for suneung in Suneung.objects.all():
+        writer.writerow({'description': suneung.description, 'start_date': suneung.start_date, 'end_date': suneung.end_date})
 
