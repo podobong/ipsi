@@ -12,21 +12,23 @@ from jeongsi.serializers import *
 
 class UniversityList(APIView):
     '''
-    대학교 목록을 반환하는 API
+    대학 목록을 반환하는 API
 
     ---
     ## `/`
     ## OUTPUT
-        - 'name': 대학교 이름
+        - 'name': 대학 이름
         - 'logo': 대학 로고 파일의 이름
         - 'susis':
+            - 'year': 학년도
             - 'name': 전형 이름
-            - 'year': 년도
-            - 'sysi_type': 수시의 전형 종류
+        - 'susi_major_blocks':
+            - 'name': 수시 학과 블록 이름
         - 'jeongsis':
-            - 'year': 년도
-        - 'majors':
-            - 'name': 학과 이름
+            - 'year': 학년도
+            - 'gun': 군
+        - 'jeongsi_major_blocks':
+            - 'name': 정시 학과 블록 이름
     '''
     def get(self, request):
         universities = University.objects.all()
@@ -39,17 +41,18 @@ class UniversitySelect(APIView):
     입시 일정을 반환하는 API
 
     ---
-    ## `/select/?univ={대학}&type1={수시/정시}&type2={전형}&major={학과}`
+    ## `/select/?univ={대학}&sj={수시/정시}&jh={(수시)전형명}&gun={(정시)군}&block={학과블록}`
     ## INPUT
-        - &로 구분되는 query parameter (ex: /select/?univ=서울대학교&type1=수시&type2=일반전형&major=국어국문학과 )
-        - 'univ': 대학교 이름 (ex: 서울대학교)
-        - 'type1': 수시 or 정시
-        - 'type2': 전형 이름 (ex: 일반전형)
-        - 'major': 학과 이름 (ex: 국어국문학과)
+        - &로 구분되는 query parameter (ex: /select/?univ=서울대학교&sj=수시&jh=일반전형&block=의과대학,수의과대학,치의과대학)
+        - 'univ': 대학 이름 (ex: 서울대학교)
+        - 'sj': 수시 or 정시
+        - 'jh': (수시) 전형 이름 (ex: 일반전형)
+        - 'gun': (정시) 군 (ex: 가군)
+        - 'block': 학과 블록 이름 (ex: 의과대학,수의과대학,치의과대학)
     ## OUTPUT
         - 'description': 일정 이름
-        - 'start_date' : 일정이 시작되는 날짜
-        - 'end_date' : 일정이 끝나는 날짜
+        - 'start_date' : 일정 시작 시간
+        - 'end_date' : 일정 종료 시간
     '''
     def get(self, request):
         def error_msg(message):
@@ -100,6 +103,32 @@ class UniversitySelect(APIView):
 
 
 class UniversitySelectAll(APIView):
+    '''
+    여러 입시 일정을 한 번에 반환하는 API
+
+    ---
+    ## `/select/?num={대학개수}&univ0={대학0}&sj0={수시/정시0}&jh0={(수시)전형명0}&gun0={(정시)군0}&block0={학과블록0}&univ1={대학1}&sj1={수시/정시1}&jh0={(수시)전형명1}&gun0={(정시)군1}&block0={학과블록1}&...`
+    ## INPUT
+        - &로 구분되는 query parameter (ex: /selectall/?num=2&univ0=서울대학교&sj0=수시&jh0=일반전형&block0=의과대학,수의과대학,치의과대학&univ1=서울대학교&sj1=정시&gun1=가군&block1=전 학과)
+        - 'num': 입력하는 대학의 개수 (ex: 2)
+        - 'univ0': 0번째 대학 이름
+        - 'sj0': 0번째 수시 or 정시
+        - 'jh0': 0번째 (수시) 전형 이름
+        - 'gun0': 0번째 (정시) 군
+        - 'block0': 0번째 학과 블록 이름
+        - ... (num 개수만큼 입력)
+    ## OUTPUT
+        - 'num': 대학 인덱스
+        - 'univ': 대학 이름
+        - 'sj': 수시 or 정시
+        - 'jh': (수시) 전형 이름
+        - 'gun': (정시) 군
+        - 'block': 학과 블록 이름
+        - 'schedules': 일정 목록
+            - 'description': 일정 이름
+            - 'start_date' : 일정 시작 시간
+            - 'end_date' : 일정 종료 시간
+    '''
     def get(self, request):
         def error_msg(message):
             return {'detail': message}
