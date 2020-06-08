@@ -1,2 +1,79 @@
-name,logo,review_url
-서울대학교,seoul,
+﻿name,logo,review_url,bigo,damdang
+서울대학교,seoul.png,https://www.univ100.kr/review/55,전 학과,김혜인
+서울시립대학교,seoul_sirib.png,https://www.univ100.kr/review/29,전 학과,김다희
+부산대학교,busan.png,https://www.univ100.kr/review/157,전 학과,차민지
+경북대학교,gyeongbook.png,https://www.univ100.kr/review/405,전 학과,김다희
+전남대학교,jeonnam.png,https://www.univ100.kr/review/407,전 학과,김다희
+충남대학교,chungnam.png,https://www.univ100.kr/review/202,전 학과,최성우
+한국예술종합학교,hanyejong.png,https://www.univ100.kr/review/213,전 학과,김혜인
+한국체육대학교,hankook_sport.png,https://www.univ100.kr/review/61,전 학과,차민지
+연세대학교,yonsei.png,https://www.univ100.kr/review/1,전 학과,김혜인
+고려대학교,korea.png,https://www.univ100.kr/review/38,전 학과,김다희
+서강대학교,seogang.png,https://www.univ100.kr/review/36,전 학과,조성지
+성균관대학교,sungkyunkwan.png,https://www.univ100.kr/review/13,전 학과,김혜인
+한양대학교,hanyang.png,https://www.univ100.kr/review/6,전 학과,최성우
+중앙대학교,chungang.png,https://www.univ100.kr/review/2,전 학과,김다희
+경희대학교,gyunghee.png,https://www.univ100.kr/review/8,전 학과,김혜인
+한국외국어대학교,hankook_foreign.png,https://www.univ100.kr/review/32,전 학과,최성우
+이화여자대학교,ewha.png,https://www.univ100.kr/review/10,전 학과,조성지
+건국대학교,kunkook.png,https://www.univ100.kr/review/30,전 학과,차민지
+동국대학교,dongguk.png,https://www.univ100.kr/review/58,전 학과,최성우
+홍익대학교,hongik.png,https://www.univ100.kr/review/19,전 학과,김다희
+숙명여자대학교,sookmyung.png,https://www.univ100.kr/review/21,전 학과,김다희
+국민대학교,kookmin.png,https://www.univ100.kr/review/62,전 학과,최성우
+숭실대학교,soongsil.png,https://www.univ100.kr/review/37,전 학과,김혜인
+세종대학교,sejong.png,https://www.univ100.kr/review/60,전 학과,김다희
+단국대학교,dankook.png,https://www.univ100.kr/review/65,전 학과,김혜인
+아주대학교,ajou.png,https://www.univ100.kr/review/71,전 학과,최성우
+인하대학교,inha.png,https://www.univ100.kr/review/175,전 학과,김혜인
+성신여자대학교,sungshin.png,https://www.univ100.kr/review/24,전 학과,최성우
+한국교원대학교,kyowon.png,https://www.univ100.kr/review/203,전 학과,최성우
+KAIST,kaist.png,https://www.univ100.kr/review/170,단일 학과,최성우
+POSTECH,postech.png,https://www.univ100.kr/review/164,단일 학과,최성우
+UNIST,unist.png,https://www.univ100.kr/review/337,단일 학과,김혜인
+GIST,gist.png,https://www.univ100.kr/review/126,단일 학과,최성우
+DGIST,dgist.png,https://www.univ100.kr/review/166,단일 학과,김다희
+서울교육대학교,seoul_edu.png,https://www.univ100.kr/review/212,단일 학과,최성우
+경인교육대학교,kyungin_edu.png,https://www.univ100.kr/review/171,단일 학과,김혜인
+공주교육대학교,gongju_edu.png,https://www.univ100.kr/review/104,단일 학과,김혜인
+부산교육대학교,busan_edu.png,https://www.univ100.kr/review/209,단일 학과,김다희
+전주교육대학교,jeonju_edu.png,https://www.univ100.kr/review/358,단일 학과,김다희
+진주교육대학교,jinju_edu.png,https://www.univ100.kr/review/162,단일 학과,최성우
+춘천교육대학교,chuncheon_edu.png,https://www.univ100.kr/review/94,단일 학과,김혜인
+광주교육대학교,gwangju_edu.png,https://www.univ100.kr/review/357,단일 학과,김다희
+대구교육대학교,daegu_edu.png,https://www.univ100.kr/review/367,단일 학과,김혜인
+청주교육대학교,cheongju_edu.png,https://www.univ100.kr/review/120,단일 학과,최성우
+육군사관학교,yooksa.png,,단일 학과,김다희
+공군사관학교,gongsa.png,,단일 학과,최성우
+해군사관학교,haesa.png,,단일 학과,최성우
+전북대학교,jeonbook.png,https://www.univ100.kr/review/143,"의과대학, 치과대학, 수의과대학",김혜인
+강원대학교,gangwon.png,https://www.univ100.kr/review/401,"의과대학, 치과대학, 수의과대학",김다희
+충북대학교,chungbook.png,https://www.univ100.kr/review/122,"의과대학, 수의과대학",김다희
+조선대학교,chosun.png,https://www.univ100.kr/review/198,"의과대학, 치과대학",김혜인
+경상대학교,gyeongsang.png,https://www.univ100.kr/review/149,"의과대학, 수의과대학",김혜인
+원광대학교,wongwang.png,https://www.univ100.kr/review/142,"의과대학, 치과대학",최성우
+제주대학교,jeju.png,https://www.univ100.kr/review/144,"의과대학, 수의과대학",최성우
+울산대학교,ulsan.png,https://www.univ100.kr/review/189,의과대학,최성우
+가톨릭대학교,catholic.png,https://www.univ100.kr/review/52,의과대학,김다희
+순천향대학교,suncheonhyang.png,https://www.univ100.kr/review/114,의과대학,김혜인
+인제대학교,inje.png,https://www.univ100.kr/review/161,의과대학,김다희
+한림대학교,hanlim.png,https://www.univ100.kr/review/96,의과대학,김혜인
+가천대학교,gachon.png,https://www.univ100.kr/review/76,의과대학,김다희
+건양대학교,geonyang.png,https://www.univ100.kr/review/102,의과대학,김혜인
+연세대학교 원주캠퍼스,yonsei_wonju.png,https://www.univ100.kr/review/22,의과대학,최성우
+가톨릭관동대학교,catholic_gwandong.png,https://www.univ100.kr/review/88,의과대학,최성우
+을지대학교,ulji.png,https://www.univ100.kr/review/74,의과대학,최성우
+계명대학교,gyemyeong.png,https://www.univ100.kr/review/165,의과대학,최성우
+대구가톨릭대학교,daegu_catholic.png,https://www.univ100.kr/review/153,의과대학,김혜인
+동국대학교 경주캠퍼스,dongguk_gyeongju.png,https://www.univ100.kr/review/59,의과대학,김다희
+영남대학교,yeongnam.png,https://www.univ100.kr/review/169,의과대학,김혜인
+동아대학교,donga.png,https://www.univ100.kr/review/182,의과대학,김다희
+고신대학교,gosin.png,https://www.univ100.kr/review/103,의과대학,최성우
+강릉원주대학교,gangneung_wonju.png,https://www.univ100.kr/review/399,치과대학,김다희
+동의대학교,dongee.png,https://www.univ100.kr/review/183,한의과대학,김다희
+대구한의대학교,daegu_hanui.png,https://www.univ100.kr/review/155,한의과대학,김혜인
+대전대학교,daejeon.png,https://www.univ100.kr/review/98,한의과대학,김다희
+동신대학교,dongsin.png,https://www.univ100.kr/review/134,한의과대학,김혜인
+우석대학교,wooseok.png,https://www.univ100.kr/review/140,한의과대학,김혜인
+상지대학교,sangji.png,https://www.univ100.kr/review/93,한의과대학,김다희
+세명대학교,semyeong.png,https://www.univ100.kr/review/113,한의과대학,김혜인
