@@ -208,10 +208,9 @@ class UniversitySelectAll(APIView):
                     'num': i,
                     'univ': univs[i],
                     'sj': sjs[i],
-                    'gun': guns[i],
+                    'jh': guns[i],
                     'block': blocks[i],
                     'schedules': JeongsiScheduleSerializer(schedules, many=True).data,
                 }
        
         return Response(responses)
-
