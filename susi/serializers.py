@@ -14,3 +14,17 @@ class SusiScheduleSerializer(serializers.ModelSerializer):
         model = SusiSchedule
         fields = ('description', 'start_date', 'end_date')
 
+
+class SusiMajorBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SusiMajorBlock
+        fields = ('name', )
+
+
+class NewSusiScheduleSerializer(serializers.ModelSerializer):
+    susi = SusiSerializer()
+    major_block = SusiMajorBlockSerializer()
+
+    class Meta:
+        model = SusiSchedule
+        fields = ('susi', 'major_block', 'description', 'start_date', 'end_date')

@@ -42,6 +42,7 @@ urlpatterns = [
     path('', include('university.urls')),
     path('', include('review.urls')),
     path('', include('suneung.urls')),
+    path('susi/', include('susi.urls')),
     # API document generation with  drf_yasg
     path('swagger<str:format>', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/',  schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
