@@ -16,7 +16,7 @@ from suneung.models import *
 
 
 # add universities
-with open('csv/university.csv', 'r') as f:
+with open('csv/university.csv', 'r', encoding='utf-8') as f:
     reader = csv.reader(f)
     next(reader)
     for row in reader:
@@ -31,7 +31,7 @@ for univ in University.objects.all():
     susi_schedule_file = 'csv/' + univ.name + '/susi_schedule.csv'
 
     if os.path.isfile(susi_file):
-        with open(susi_file, 'r') as f:
+        with open(susi_file, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             next(reader)
             for row in reader:
@@ -40,7 +40,7 @@ for univ in University.objects.all():
                     Susi(university=university, name=row[1], year=row[2]).save()
     
     if os.path.isfile(susi_major_block_file):
-        with open(susi_major_block_file, 'r') as f:
+        with open(susi_major_block_file, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             next(reader)
             for row in reader:
@@ -49,7 +49,7 @@ for univ in University.objects.all():
                     SusiMajorBlock(university=university, name=row[1]).save()
 
     if os.path.isfile(susi_schedule_file):
-        with open(susi_schedule_file, 'r') as f:
+        with open(susi_schedule_file, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             next(reader)
             for row in reader:
