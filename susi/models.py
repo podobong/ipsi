@@ -2,7 +2,7 @@ import datetime
 
 from django.db import models
 
-from university.models import *
+from university.models import University, SusiMajorBlock
 
 
 YEARS = []
@@ -52,6 +52,28 @@ class SusiSchedule(models.Model):
             related_name='susi_schedules',
             on_delete=models.CASCADE,
             )
+
+    university = models.CharField(
+            max_length=31,
+            default='',
+            editable=False,
+    )
+    sj = models.CharField(
+            max_length=15,
+            default='수시',
+            editable=False,
+    )
+    jh = models.CharField(
+            max_length=63,
+            default='',
+            editable=False,
+    )
+    block = models.CharField(
+            max_length=63,
+            default='',
+            editable=False,
+    )
+
     description = models.CharField(
             verbose_name='설명',
             max_length=255,
@@ -63,7 +85,13 @@ class SusiSchedule(models.Model):
             verbose_name='종료시간',
             )
 
+    def save(self, **kwargs):
+        self.university = self.susi.university.name
+        self.sj = '수시'
+        self.jh = self.susi.name
+        self.block = self.major_block.name
+        super().save()
+
     def __str__(self):
         return str(self.susi.year) + '/' + self.susi.university.name + '/수시전형/' + self.susi.name + '/' + self.description + '/' + self.major_block.name
         # ex) 2021/서울대학교/수시전형/일반전형/지원서 접수/의과대학, 수의과대학, 치의과대학
-
