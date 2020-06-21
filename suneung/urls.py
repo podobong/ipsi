@@ -4,5 +4,5 @@ from suneung import views
 
 
 urlpatterns = [
-    path('suneung/', views.SuneungList.as_view()),
+    path('', views.SuneungList.as_view()),
 ]

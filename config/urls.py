@@ -39,8 +39,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('review.urls')),
-    path('', include('suneung.urls')),
+    path('review/', include('review.urls')),
+    path('suneung/', include('suneung.urls')),
     path('susi/', include('susi.urls')),
     # API document generation with  drf_yasg
     path('swagger<str:format>', schema_view.without_ui(cache_timeout=0), name='schema-json'),

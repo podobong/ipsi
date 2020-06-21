@@ -1,3 +1,4 @@
+from django.utils import timezone
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -15,8 +16,8 @@ class SusiScheduleList(APIView):
                 'jh': schedule.susi.name,
                 'major_block': schedule.major_block.name,
                 'description': schedule.description,
-                'start_date': schedule.start_date,
-                'end_date': schedule.end_date,
+                'start_date': timezone.localtime(schedule.start_date),
+                'end_date': timezone.localtime(schedule.end_date),
             }
             # TODO: add 'favorite'
             schedule_list.append(schedule_info)
