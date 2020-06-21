@@ -3,8 +3,6 @@ from rest_framework.response import Response
 
 
 class SusiScheduleList(APIView):
-    serializer_class = NewSusiScheduleSerializer
-
     def get(self, request):
         schedules = SusiSchedule.objects.all()
         schedule_list = []
