@@ -1,6 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from susi.models import SusiSchedule
+
 
 class SusiScheduleList(APIView):
     def get(self, request):
