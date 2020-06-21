@@ -38,7 +38,7 @@ SECRET_KEY = get_secret('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'web']
+ALLOWED_HOSTS = ['125.130.100.2', 'web']
 
 
 # Application definition
