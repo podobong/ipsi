@@ -11,8 +11,8 @@
 
 ex) 미술대학/음악대학/인문계열/자연계열 - 이렇게 서로 일정이 다르다면 해당 단위 4개를 만들고 일정을 각각 따로 처리하기
 
-### susi major block
 - university: 대학 이름
+- susi_jeongsi: 수시 or 정시
 - name: 학과 블럭 이름
   - ex: 인문계열, 의학계열, 그 외
 
@@ -20,39 +20,25 @@ ex) 미술대학/음악대학/인문계열/자연계열 - 이렇게 서로 일�
 - university: 대학 이름
 - name: 학과 블럭 이름
 
-## susi / jeongsi
-수시 및 정시 정보
+## jeonhyeong
+전형 정보
 
-### susi
 - university: 대학 이름
+- susi_jeongsi: 수시 or 정시
+- year: 학년도
 - name: 전형 이름
-- year: 학년도
-
-### jeongsi
-- university: 대학 이름
-- gun: 군
-- year: 학년도
 
 ## schedule
 일정 정보
 
 ### susi schedule
-- susi: 수시 정보 (학년도/대학명/수시전형/전형명)
-  - ex) 2021/서울대학교/수시전형/일반전형
-- major block: 수시 학과 블럭 (대학명/학과블럭명)
-  - ex) 서울대학교/의학계열
+- university: 대학 이름
+- susi_jeongsi: 수시 or 정시
+- year: 학년도
+- jeonhyeong: 전형 이름
+- major block: 학과 블럭 이름
 - description: 일정 정보
   - ex) 지원서 접수
 - start date: 일정 시작 시점
   - ex) 2020-06-06T18:00:00
 - end date: 일정 종료 시점
-
-### jeongsi schedule
-- jeongsi: 정시 정보 (학년도/대학명/정시전형/군)
-  - ex) 2021/서울대학교/정시전형/가군
-- major block: 정시 학과 블럭 (대학명/학과블럭명)
-  - ex) 서울대학교/전 학과
-- description: 일정 정보
-- start date: 일정 시작 시점
-- end date: 일정 종료 시점
-
