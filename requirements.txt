@@ -9,7 +9,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 cryptography==2.9.2
 distro==1.5.0
-Django==3.0.7
+Django==3.1.6
 djangorestframework==3.11.0
 docker==4.2.1
 docker-compose==1.26.0
